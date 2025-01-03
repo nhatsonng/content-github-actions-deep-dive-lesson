@@ -50,15 +50,15 @@ jobs:
     needs: lint
     steps:
       - name: Checkout code
-        uses: action/checkout@v4.2.2
+        uses: actions/checkout@v4.2.2
       - name: Create docs folder
         run: mkdir docs
-      - name: COnvert md to html
+      - name: Convert md to html
         uses: docker://pandoc/core:2.9
         with:
           args: userguide.md -t html -o docs/index.html
       - name: Deploy Pages site
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@v4.7.2
         with:
           branch: gh-pages
           folder: docs
